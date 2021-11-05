@@ -1,0 +1,473 @@
+@import "_normalize.scss";
+@import "_fonts.scss";
+@import "_icons-font.scss";
+@import "_mixin.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100vw;
+    padding: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: calc(10px + 6 * ((100vw - 320px)/(1770 - 320)));
+    font-weight: 400;
+    color: #ffffff;
+    @media screen and (max-width:576px) {
+        padding: 1px;
+    }
+}
+input[type="search"] {
+  appearance: none;
+  border-radius: 0;
+  background-image: linear-gradient(transparent, transparent); // fixing rounded corners and shadow in Safari inputs
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 15px);
+    padding: 8.5em 0 0 0;
+    position: relative;
+    overflow: hidden;
+    @include background-format;
+    background-image: url(../img/background-img/desktop/bckground-header-desktop.png);
+    &__logo {
+        font-size: calc(30px + 18 * ((100vw - 320px)/(1770 - 320)));
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        line-height: 1em;
+        text-transform: uppercase;
+        margin-bottom: 0.3em;
+    }
+    &__motto {
+        font-size: calc(13px + 9 * ((100vw - 320px)/(1770 - 320)));
+        letter-spacing: 0.3em;
+        margin-bottom: 2.3em;
+    }
+    &__search-form {
+        display: flex;
+        width: 90%;
+        max-width: 650px;
+        margin-bottom: 8.6em;
+        font-size: calc(8px + 6 * ((100vw - 320px)/(1770 - 320)));
+        font-weight: 400;
+        .search-form__input {
+            flex-grow: 1;
+            height: 4.3em;
+            padding: 0 1em;
+            border: none;
+            border-left: 2px solid transparent;
+            outline: none;
+            background-color: #ffffff;
+            letter-spacing: 0.2em;
+            color: #999999;
+            text-align: center;
+            &:focus {
+                border-left: 2px solid #5474fd;
+            }
+        }
+        .search-form__button {
+            position: relative;
+            width: 25%;
+            height: 4.3em;
+            border: 2px solid #ffffff;
+            background-color: #5474fd;
+            font-family: 'Aleo';
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease-in 0.1s;
+            &::after {
+                content: "Go!";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: calc(50% - 0.5em);
+                color: transparent;
+            }
+            svg {
+                display: inline-block;
+                width: 1.25em;
+                height: 1.25em;
+                vertical-align: middle;
+                fill: #ffffff;
+            }
+            &:hover {
+                color: transparent;
+                transition: all 0.1s ease;
+                &::after {
+                    color: #ffffff;
+                }
+                svg {
+                    fill: transparent;
+                }
+            }
+            &:active {
+                box-shadow: 0px 0px 30px -10px rgba(35, 35, 35, 0.6) inset;
+                transition: all 0.1s ease;
+            }
+
+            @media screen and (max-width:576px) {
+                align-self: center;;
+            }
+        }
+        @media screen and (max-width:576px) {
+            flex-direction: column;
+        }
+    }
+    &__scroll {
+        font-size: calc(10px + 4 * ((100vw - 320px)/(1770 - 320)));
+        letter-spacing: 0.2em;
+        text-decoration: none;
+        color: #ffffff;
+        &::after {
+            content: "";
+            display: block;
+            width: 1.1em;
+            height: 0.6em;
+            margin: 1em auto 0;
+            background-image: url(../img/svg/arrow-down.svg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
+    }
+    @media screen and (max-width:576px) {
+        height: calc(100vh - 1px);
+        background-image: url(../img/background-img/mobile/bckground-header-mobile.png);
+    }
+    @media screen and (max-width:992px) and (min-width:577px) {
+        background-image: url(../img/background-img/tablet/bckground-header-tablet.png);
+    }
+}
+.top-footer {
+    display: flex;
+    height: 5em;
+    background-color: #5474fd;
+    z-index: 2;
+    &__logo {
+        z-index: 2;
+        font-size: calc(13px + 11 * ((100vw - 320px)/(1770 - 320)));
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    &__burger-checkbox {
+        display: none;
+    }
+    &__menu {
+        width: 48.5%;
+        display: flex;
+        justify-content: space-between;
+        .menu__item {
+            border-top: 2px solid transparent;
+            padding-top: 2px;
+            font-family: 'Aleo';
+            font-size: calc(10px + 4 * ((100vw - 320px)/(1770 - 320)));
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #ffffff;
+            &:hover {
+                border-top: 2px solid #ffffff;
+            }
+        }
+    }
+    @media screen and (max-width: 992px) {
+        // position: relative;
+        &__burger-img {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.8s ease;
+            &::after,
+            &::before {
+                position: absolute;
+                content: "";
+                top: -10px;
+                display: block;
+                width: 30px;
+                height: 2px;
+                background-color: #ffffff;
+            }
+            &::before {
+                top: 10px;
+            }
+        }
+        &__menu {
+            position: absolute;
+            z-index: 1;
+            bottom: -100vh;
+            left: 0;
+            width: calc(100vw - 2px);
+            height: 18em;
+            padding: 2em 5%;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-end;
+            background-color: #5474fd;
+            transition: all 0.8s ease;
+            @media screen and (min-width:577px) {
+                width: calc(100vw - 30px);
+            }
+        }
+        &__burger-checkbox:checked ~ .top-footer__burger-img {
+            transform: rotate(45deg);
+            transition: all 0.8s ease;
+            &::before,
+            &::after {
+                top: 0;
+                transform: rotate(90deg);
+            }
+        }
+        &__burger-checkbox:checked ~ .top-footer__menu {
+            bottom: 5em;
+            transition: all 0.8s ease;
+        }
+    }
+}
+.why-choose-us {
+    padding: 7.5em 0;
+    @include background-format;
+    background-image: url(../img/background-img/desktop/bckgrnd-main01-desktop.png);   
+    @media screen and (max-width:576px) {
+        background-image: url(../img/background-img/mobile/bckgrnd-main01-mobile.png);
+    }
+    @media screen and (max-width:992px) and (min-width:577px) {
+        background-image: url(../img/background-img/tablet/bckgrnd-main01-tablet.png);
+    }
+}
+.search-select-book {
+    background-color: #333333;
+}
+.spain {
+    padding: 14.4em 0 6.25em;
+    @include background-format;
+    background-image: url(../img/background-img/desktop/bckgrnd-main02-desktop.png);   
+    @media screen and (max-width:576px) {
+        background-image: url(../img/background-img/mobile/bckgrnd-main02-mobile.png);
+    }
+    @media screen and (max-width:992px) and (min-width:577px) {
+        background-image: url(../img/background-img/tablet/bckgrnd-main02-tablet.png);
+    }
+}
+.spain-next {
+    padding: 14.4em 0 6.25em;
+    @include background-format;
+    background-image: url(../img/background-img/desktop/bckgrnd-main03-desktop.png);   
+    @media screen and (max-width:576px) {
+        background-image: url(../img/background-img/mobile/bckgrnd-main03-mobile.png);
+    }
+    @media screen and (max-width:992px) and (min-width:577px) {
+        background-image: url(../img/background-img/tablet/bckgrnd-main03-tablet.png);
+    }
+}
+.what-our-tourists-say {
+    padding: 7.5em 0 12.5em;
+    @include background-format;
+    background-image: url(../img/background-img/desktop/bckgrnd-main04-desktop.png);
+    &__title {
+        margin-bottom: 2.6em;
+        font-family: 'Aleo';
+        font-size: calc(15px + 21 * ((100vw - 320px)/(1770 - 320)));
+        font-weight: 400;
+        text-align: center;
+    }
+    @media screen and (max-width:576px) {
+        background-image: url(../img/background-img/mobile/bckgrnd-main04-mobile.png);
+    }
+    @media screen and (max-width:992px) and (min-width:577px) {
+        background-image: url(../img/background-img/tablet/bckgrnd-main04-tablet.png);
+    }   
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1110px;
+    margin: 0 auto;
+    &_header-big {
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &_header-small {
+        align-items: center;
+    }
+    &_search-select-book {
+        justify-content: space-around;
+        background-image: url(../img/svg/bckgrnd-unite.svg);
+        background-repeat: no-repeat;
+        background-position: center 1em;
+        background-size: 70%;
+        font-family: 'Aleo', serif;
+        font-size: calc(15px + 21 * ((100vw - 320px)/(1770 - 320)));
+        font-weight: 400;
+        color: #e8e8e8;
+        .ssb-item {
+            width: 20%;
+            margin: 2.5em 0 3.2em;
+            background-color: #333333;
+            svg {
+                display: block;
+                width: 1.7em;
+                height: 1.7em;
+                margin: 0 auto 0.8em;
+            }
+            &__name {
+                text-align: center;
+            }
+        }
+    }
+    &_spain-next {
+        justify-content: flex-end;
+    }
+    &_base-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.container_why-choose-us,
+.container_spain,
+.container_spain-next,
+.container_what-our-tourists-say {
+    @media screen and (max-width:576px) {
+        flex-direction: column;
+    }
+}
+.article {
+    flex-basis: 48.5%;
+    padding-top: 5.25em;
+    &_spain {
+        padding: 3.1em 1.9em;
+        background-color: #232323;
+        opacity: 0.9;
+    }
+    &_what-our-tourists-say {
+        order: 2;
+        flex-basis: 60%;
+        padding: 3.1em 3.4em;
+        background-color: #333333;
+    }
+    &__subtitle {
+        margin-bottom: 1.5em;
+        font-size: calc(14px + 6 * ((100vw - 320px)/(1770 - 320)));
+        letter-spacing: 0.075em;
+        color: #e8e8e8;
+    }
+    &__title {
+        margin-bottom: 1.5em;
+        font-size: calc(14px + 6 * ((100vw - 320px)/(1770 - 320)));
+        font-weight: 400;
+        text-transform: uppercase;
+        &_why-choose-us {
+            margin-bottom: 1.7em;
+            font-family: 'Aleo';
+            font-size: calc(15px + 21 * ((100vw - 320px)/(1770 - 320)));
+            text-transform: none;
+        }
+    }
+    &__text {
+        margin-bottom: 2em;
+        line-height: 1.6em;
+        color: #e8e8e8;
+        &_why-choose-us {
+            letter-spacing: 0.1em;
+        }
+        &_what-our-tourists-say {
+            margin-bottom: 0;
+            &::before {
+            content: '';
+            display: inline-block;
+            width: 2.25em;
+            height: 2.25em;
+            margin: 0 0.5em 0.5em 0;
+            background-image: url(../img/svg/quote-left.svg);
+            }
+        }
+    }
+    &__button {
+        width: 40%;
+        height: 3.75em;
+        padding: 0 1em;
+        border: none;
+        background: linear-gradient(45deg, rgb(73, 107, 254) 35%, rgb(84, 116, 253) 35%);    
+        font-family: 'Aleo';
+        line-height: 1.6em;
+        letter-spacing: 0.075em;
+        color: #ffffff;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:hover {
+            transform: rotate3d(2, 0, 1, 360deg);
+            transition: all 1s ease-in 0.1s;
+        }
+        &:active {
+            box-shadow: 0px 0px 30px -10px rgba(35, 35, 35, 0.6) inset;
+            transition: all 0.1s ease-in;
+        }
+        @media screen and (max-width: 576px) {
+            margin-bottom: 2em;
+        }
+    }
+}
+.pictures {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    flex-basis: 48.5%;
+    img {
+        width: 65%;
+        &:first-child {
+            align-self: center;
+            margin-bottom: 0.3em;
+            @media screen and (max-width: 576px) {
+                margin-bottom: 2em;
+            }
+        }
+    }
+    &_what-our-tourists-say {
+        flex-basis: 40%;
+        img:first-child {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            margin-bottom: 0;
+        }
+    }
+}
+.base-footer {
+    background-color: #232323;
+    font-size: calc(10px + 6 * ((100vw - 320px)/(1770 - 320)));
+    &__logo {
+        font-size: calc(15px + 9 * ((100vw - 320px)/(1770 - 320)));
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-top: 5em;
+    }
+    &__motto {
+        letter-spacing: 0.1em;
+        margin: 1em 0 2em;
+    }
+    &__media {
+        margin-bottom: 3.25em;
+        a {
+            color: #e8e8e8;
+            text-decoration: none;
+            margin: 0 0.75em;
+            &:hover {
+                color: #5474fd;
+                position: relative;
+                bottom: 0.25em;   
+            }
+        }
+    }
+}

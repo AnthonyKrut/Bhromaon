@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Icons-Social';
+    src:  url('../icons-font/Icons-Social.eot?1ynky0');
+    src:  url('../icons-font/Icons-Social.eot?1ynky0#iefix') format('embedded-opentype'),
+      url('../icons-font/Icons-Social.ttf?1ynky0') format('truetype'),
+      url('../icons-font/Icons-Social.woff?1ynky0') format('woff'),
+      url('../icons-font/Icons-Social.svg?1ynky0#Icons-Social') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="icon-"]::before, 
+  [class*=" icon-"]::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Icons-Social' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-facebook:before {
+    content: "\e900";
+  }
+  .icon-twitter:before {
+    content: "\e901";
+  }
+  .icon-linkedin-in:before {
+    content: "\e902";
+  }
+  .icon-youtube:before {
+    content: "\e903";
+  }
+  .icon-pinterest:before {
+    content: "\e904";
+  }
